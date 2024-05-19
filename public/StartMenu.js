@@ -21,7 +21,7 @@ export default class StartMenu extends Phaser.Scene
                 alpha: 0,
                 duration: 300,
                 onComplete: () => {
-                    this.scene.start('Level1');
+                    this.scene.start('Level1');//havi stinks
                 }
 
             });
