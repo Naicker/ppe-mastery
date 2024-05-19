@@ -9,9 +9,6 @@ export default class Level1 extends Phaser.Scene {
     }
 
     create() {
-        
-        const d = new Date();
-        this.registry.set('time', d.getTime());        
         // Display the background
         this.add.image(400, 300, 'hazard1').setDisplaySize(800,600);
 

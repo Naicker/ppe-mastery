@@ -1,4 +1,3 @@
-import Boot from "./Boot.js"
 import Preloader from "./Preloader.js"
 import StartMenu from "./StartMenu.js"
 import Level1 from "./Level1.js"
@@ -7,7 +6,6 @@ import Level1b from "./Level1b.js"
 import Level1ab from "./Level1ab.js"
 import Level2 from "./Level2.js"
 import Level3 from "./Level3.js"
-import Leaderboard from "./Leaderboard.js"
 
 
 
@@ -15,12 +13,12 @@ const config = {
     type: Phaser.AUTO,
     scale: {
         mode: Phaser.Scale.FIT,
-        parent: 'phaser-game',
+        parent: 'phaser-example',
         width: 800,
         height: 600
 
     },
-    scene: [Boot, Preloader, StartMenu, Level1, Level1a, Level1b, Level1ab,Level2, Level3, Leaderboard ],
+    scene: [Preloader, StartMenu, Level1, Level1a, Level1b, Level1ab,Level2, Level3 ],
     physics: {
         default: 'arcade',
         arcade: {debut: false}

@@ -6,8 +6,6 @@ export default class Preloader extends Phaser.Scene {
     preload() {
         this.load.setPath('./assets');
 
-        this.add.image(400, 300, 'loading').setDisplaySize(800,600);
-
         // Load assets for the start menu
         this.load.image('titlescreen', 'backgrounds/titlescreen.png');
 
@@ -53,12 +51,6 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('mask_ppe', 'Level3 Assets/mask_ppe.jpg');
         this.load.image('drop_box', 'Level3 Assets/drop_ppe.jpg');
         this.load.image('gloves_ppe', 'Level3 Assets/gloves_ppe.jpg');
-
-
-
-
-        this.load.image('leaderboard_bg', 'leaderboard_background.png');
-        this.load.image('leader_title', 'leaderboard_title.png')
 
 
     }
