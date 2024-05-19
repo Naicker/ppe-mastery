@@ -41,7 +41,7 @@ export default class StartMenu extends Phaser.Scene
     
             // Create a text object for the score, positioned a bit to the right
             this.add.text(xs + 200, ys + i * 25, `Score: ${leaderboard[i].score}`, { fill: '#0f0', fontSize: '30px' });
-        }
+        }
     
     
 
