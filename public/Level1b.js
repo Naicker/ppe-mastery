@@ -3,7 +3,7 @@ export default class Level1 extends Phaser.Scene {
         super('Level1b');
         this.score = 0;
         this.risks = [
-            {x: 175, y: 385},
+            {x: 190, y: 370}    ,
 
         ];
     }
@@ -16,6 +16,7 @@ export default class Level1 extends Phaser.Scene {
         this.risks.forEach(risk => {
             const riskImage = this.add.image(risk.x, risk.y, 'hz3').setInteractive();
             riskImage.setScale(0.73);
+            //riskImage.setDisplaySize(50,50);
             riskImage.on('pointerdown', () => this.onRiskClicked(riskImage));
         });
   // Display the score

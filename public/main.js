@@ -5,6 +5,8 @@ import Level1a from "./Level1a.js"
 import Level1b from "./Level1b.js"
 import Level1ab from "./Level1ab.js"
 import Level2 from "./Level2.js"
+import Level3 from "./Level3.js"
+
 
 
 const config = {
@@ -16,7 +18,7 @@ const config = {
         height: 600
 
     },
-    scene: [Preloader, StartMenu, Level1, Level1a, Level1b, Level1ab, Level2],
+    scene: [Preloader, StartMenu, Level1, Level1a, Level1b, Level1ab,Level2, Level3 ],
     physics: {
         default: 'arcade',
         arcade: {debut: false}

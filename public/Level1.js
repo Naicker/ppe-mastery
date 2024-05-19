@@ -20,7 +20,16 @@ export default class Level1 extends Phaser.Scene {
         });
   // Display the score
   this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
+
+  const hintButton = this.add.text(100, 250, 'Hint', { fill: '#0f0', fontSize: '20px' }).setInteractive();
+  hintButton.on('pointerdown', () => {
+      // Move to the next level or end game
+      this.scene.start('hintPage'); // Change 'NextLevel' to your actual next scene key
+  });
+
 }
+
+
 
 onRiskClicked(riskImage) {
     riskImage.destroy();

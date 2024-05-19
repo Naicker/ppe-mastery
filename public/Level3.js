@@ -1,47 +1,40 @@
-export default class Level2 extends Phaser.Scene {
+export default class Level3 extends Phaser.Scene {
     constructor() {
-        super('Level2');
+        super('Level3');
 
-        // Define hazards and PPEs as class properties
-        this.hazards = [
-            { x: 100, y: 100, key: 'hz1', correctPPE: 'ppe1' },
-            { x: 100, y: 300, key: 'hz2', correctPPE: 'ppe2' },
-            // ... add more hazards as needed
+        this.dropZones = [
+            { x: 800, y: 600, key: 'dz1', correctPPE: 'ppe1' },
+            { x: 900, y: 600, key: 'dz2', correctPPE: 'ppe2' }, // Added another drop zone next to the first one
+            { x: 800, y: 700, key: 'dz3', correctPPE: 'ppe3' },
+            { x: 900, y: 700, key: 'dz4', correctPPE: 'ppe4' }, // Added another drop zone next to the third one
+            // ... add more drop zones as needed
         ];
 
         this.ppeItems = [
-            { x: 400, y: 500, key: 'ppe1' },
-            { x: 600, y: 500, key: 'ppe2' },
+            { x: 100, y: 500, key: 'ppe1' },
+            { x: 200, y: 500, key: 'ppe2' },
+            { x: 300, y: 500, key: 'ppe3' },
+            { x: 400, y: 500, key: 'ppe4' },
             // ... add more PPE items as needed
         ];
     }
 
-
     create() {
+        this.add.image(400, 300, 'background_level3').setDisplaySize(800, 600);
+        this.add.image(400, 300, 'worker_without_ppe').setDisplaySize(800, 600);
 
-        // Display the background
-        const bg = this.add.image(400, 300, 'ground').setDisplaySize(800, 600);
-        console.log('Background added', bg);
-
-        // Display hazards and create drop zones
-        this.hazards.forEach(hazard => {
-            const hazardImage = this.add.image(hazard.x, hazard.y, hazard.key).setScale(0.5);
-            console.log('Hazard added', hazardImage);
-
+        this.dropZones.forEach(hazard => {
             // Add drop zone image
-            const dropZoneImage = this.add.image(hazard.x + 400, hazard.y, 'dropZone').setScale(0.15).setInteractive({ dropZone: true });
+            const dropZoneImage = this.add.image(hazard.x - 300, hazard.y - 100, hazard.key).setScale(0.09).setInteractive({ dropZone: true });
             dropZoneImage.setData('key', hazard.key);
             dropZoneImage.setData('correctPPE', hazard.correctPPE);
             dropZoneImage.setData('filled', false);
-            console.log('Drop zone added', dropZoneImage);
+            console.log('drop_ppe', dropZoneImage);
         });
 
-        // Create draggable PPE items
-        this.ppeItems.forEach(ppe => {
-            const item = this.add.image(ppe.x, ppe.y, ppe.key).setInteractive();
-            item.setScale(0.45);
-            this.input.setDraggable(item);
-            console.log('PPE item added', item);
+        this.ppeItems.forEach(ppeItem => {
+            const ppeImage = this.add.image(ppeItem.x, ppeItem.y, ppeItem.key).setScale(0.15).setInteractive();
+            this.input.setDraggable(ppeImage);
         });
 
         // Drag events
@@ -65,7 +58,6 @@ export default class Level2 extends Phaser.Scene {
             if (gameObject.texture.key === dropZone.getData('correctPPE')) {
                 gameObject.x = dropZone.x;
                 gameObject.y = dropZone.y;
-                gameObject.input.enabled = false;
                 dropZone.setData('filled', true);
             } else {
                 gameObject.x = gameObject.input.dragStartX;
@@ -73,7 +65,7 @@ export default class Level2 extends Phaser.Scene {
             }
 
             // Check if all hazards have been correctly matched with PPEs
-            const allMatched = this.hazards.every(hazard => {
+            const allMatched = this.dropZones.every(hazard => {
                 return this.children.list.some(child => {
                     return child.getData('key') === hazard.key && child.getData('filled');
                 });
@@ -84,14 +76,9 @@ export default class Level2 extends Phaser.Scene {
                 const nextButton = this.add.text(20, 550, 'Next', { fill: '#0f0' }).setInteractive();
                 nextButton.on('pointerdown', () => {
                     // Move to the next level or end game
-                    this.scene.start('Level3'); // Change 'NextLevel' to your actual next scene key
+                    this.scene.start('Level4'); // Change 'NextLevel' to your actual next scene key
                 });
             }
-            const hintButton = this.add.text(200, 550, 'Hint', { fill: '#0f0', fontSize: '20px' }).setInteractive();
-            hintButton.on('pointerdown', () => {
-                // Move to the next level or end game
-                this.scene.start('hintPage'); // Change 'NextLevel' to your actual next scene key
-            });
         });
     }
 }

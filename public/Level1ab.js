@@ -3,7 +3,7 @@ export default class Level1 extends Phaser.Scene {
         super('Level1ab');
         this.score = 0;
         this.risks = [
-            {x: 200, y: 200},
+            {x: 400, y: 550},
 
         ];
     }
@@ -15,7 +15,7 @@ export default class Level1 extends Phaser.Scene {
         // Display the risks
         this.risks.forEach(risk => {
             const riskImage = this.add.image(risk.x, risk.y, 'hz4').setInteractive();
-            riskImage.setScale(0.1);
+            riskImage.setScale(0.75);
             riskImage.on('pointerdown', () => this.onRiskClicked(riskImage));
         });
   // Display the score
@@ -29,7 +29,7 @@ onRiskClicked(riskImage) {
     
 
         // Check if the player has identified all risks
-        if (this.score === this.risks.length) {
+        if ( 1 === this.risks.length) {
             // Proceed to level 2
         this.scene.start('Level2');
         }
