@@ -6,6 +6,11 @@ import Level1b from "./Level1b.js"
 import Level1ab from "./Level1ab.js"
 import Level2 from "./Level2.js"
 import Level3 from "./Level3.js"
+import Level4 from "./Level4.js"
+import hintPage from "./hintPage.js"
+import Level4a from "./Level4a.js"
+
+
 
 
 
@@ -18,7 +23,7 @@ const config = {
         height: 600
 
     },
-    scene: [Preloader, StartMenu, Level1, Level1a, Level1b, Level1ab,Level2, Level3 ],
+    scene: [Preloader, StartMenu, Level1, Level1a, Level1b, Level1ab,Level2, Level3, Level4, Level4a, hintPage ],
     physics: {
         default: 'arcade',
         arcade: {debut: false}
