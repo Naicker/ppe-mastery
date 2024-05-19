@@ -31,7 +31,7 @@ onRiskClicked(riskImage) {
         // Check if the player has identified all risks
         if ( 1 === this.risks.length) {
             // Proceed to level 2
-        this.scene.start('Level2');
+        this.scene.start('Leaderboard');
         }
 }
 }
