@@ -21,6 +21,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('hz3', 'hz3.png');
         this.load.image('hazard4', 'hazard4.png');
         this.load.image('hz4', 'hz4.png');
+        this.load.image('tick', 'tick.png');
 
         // Load assets for Level 2
         this.load.image('ground', 'ground.png');
@@ -51,6 +52,26 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('mask_ppe', 'Level3 Assets/mask_ppe.jpg');
         this.load.image('drop_box', 'Level3 Assets/drop_ppe.jpg');
         this.load.image('gloves_ppe', 'Level3 Assets/gloves_ppe.jpg');
+
+        //fourth asset
+        this.load.image('boots_no_ppe', 'boots_no_ppe.png');
+        this.load.image('boots_ppe', 'boots_ppe.png');
+        this.load.image('dude', 'dude.png');
+        this.load.image('drop_box', 'drop_ppe.jpg');
+        this.load.image('enviroment_choosing', 'enviroment_choosing.png');
+        this.load.image('game_over', 'game_over.png');
+        this.load.image('helmet_no_ppe', 'helmet_no_ppe.png');
+        this.load.image('safet_helmat_ppe', 'safet_helmat_ppe.png');
+        this.load.image('safety_goggles_ppe', 'safety_goggles_ppe.png');
+        this.load.image('level4_completed', 'level4_completed.png');
+        this.load.image('plantation_enviroment', 'plantation_enviroment.png');
+        this.load.image('refinery_enviroment', 'refinery_enviroment.png');
+        this.load.image('sun_glass', 'sun_glass.png');
+
+        //hint
+        this.load.image('hintBackground', 'hintBackground.png');
+        this.load.image('flork', 'flork.png');
+        this.load.image('chatbox', 'chatbox.png')
 
 
     }

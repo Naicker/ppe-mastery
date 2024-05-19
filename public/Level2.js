@@ -23,6 +23,12 @@ export default class Level2 extends Phaser.Scene {
         const bg = this.add.image(400, 300, 'ground').setDisplaySize(800, 600);
         console.log('Background added', bg);
 
+        const hintButton = this.add.text(20, 500, 'Hint', { fill: '#0f0', fontSize: '20px' }).setInteractive();
+        hintButton.on('pointerdown', () => {
+            // Move to the next level or end game
+            this.scene.start('hintPage'); // Change 'NextLevel' to your actual next scene key
+        });
+
         // Display hazards and create drop zones
         this.hazards.forEach(hazard => {
             const hazardImage = this.add.image(hazard.x, hazard.y, hazard.key).setScale(0.5);
@@ -72,6 +78,7 @@ export default class Level2 extends Phaser.Scene {
                 gameObject.y = gameObject.input.dragStartY;
             }
 
+
             // Check if all hazards have been correctly matched with PPEs
             const allMatched = this.hazards.every(hazard => {
                 return this.children.list.some(child => {
@@ -81,17 +88,12 @@ export default class Level2 extends Phaser.Scene {
 
             if (allMatched) {
                 // Display the next button
-                const nextButton = this.add.text(20, 550, 'Next', { fill: '#0f0' }).setInteractive();
+                const nextButton = this.add.text(20, 550, 'Next', { fill: '#0f0', fontSize: '20px' }).setInteractive();
                 nextButton.on('pointerdown', () => {
                     // Move to the next level or end game
                     this.scene.start('Level3'); // Change 'NextLevel' to your actual next scene key
                 });
             }
-            const hintButton = this.add.text(200, 550, 'Hint', { fill: '#0f0', fontSize: '20px' }).setInteractive();
-            hintButton.on('pointerdown', () => {
-                // Move to the next level or end game
-                this.scene.start('hintPage'); // Change 'NextLevel' to your actual next scene key
-            });
         });
     }
 }

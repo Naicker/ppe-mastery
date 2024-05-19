@@ -2,13 +2,12 @@ export default class Level3 extends Phaser.Scene {
     constructor() {
         super('Level3');
 
-        this.dropZones = [
-            { x: 800, y: 600, key: 'dz1', correctPPE: 'ppe1' },
-            { x: 900, y: 600, key: 'dz2', correctPPE: 'ppe2' }, // Added another drop zone next to the first one
-            { x: 800, y: 700, key: 'dz3', correctPPE: 'ppe3' },
-            { x: 900, y: 700, key: 'dz4', correctPPE: 'ppe4' }, // Added another drop zone next to the third one
-            // ... add more drop zones as needed
-        ];
+        this.dropZone1 = { x: 900, y: 600, key: 'dz1', correctPPE: 'ppe1' };
+        this.dropZone2 = { x: 475, y: 550, key: 'dz2', correctPPE: 'ppe2' };
+        this.dropZone3 = { x: 850, y: 1000, key: 'dz3', correctPPE: 'ppe3' };
+        this.dropZone4 = { x: 600, y: 750, key: 'dz4', correctPPE: 'ppe4' };
+
+        this.dropZones = [this.dropZone1, this.dropZone2, this.dropZone3, this.dropZone4];
 
         this.ppeItems = [
             { x: 100, y: 500, key: 'ppe1' },
@@ -23,9 +22,17 @@ export default class Level3 extends Phaser.Scene {
         this.add.image(400, 300, 'background_level3').setDisplaySize(800, 600);
         this.add.image(400, 300, 'worker_without_ppe').setDisplaySize(800, 600);
 
+
+        const hintButton = this.add.text(20, 500, 'Hint', { fill: '#0f0', fontSize: '20px' }).setInteractive();
+        hintButton.on('pointerdown', () => {
+            // Move to the next level or end game
+            this.scene.start('hintPage'); // Change 'NextLevel' to your actual next scene key
+        });
+
+
         this.dropZones.forEach(hazard => {
             // Add drop zone image
-            const dropZoneImage = this.add.image(hazard.x - 300, hazard.y - 100, hazard.key).setScale(0.09).setInteractive({ dropZone: true });
+            const dropZoneImage = this.add.image(hazard.x - 300, hazard.y - 500, hazard.key).setScale(0.06).setInteractive({ dropZone: true });
             dropZoneImage.setData('key', hazard.key);
             dropZoneImage.setData('correctPPE', hazard.correctPPE);
             dropZoneImage.setData('filled', false);
@@ -73,7 +80,7 @@ export default class Level3 extends Phaser.Scene {
 
             if (allMatched) {
                 // Display the next button
-                const nextButton = this.add.text(20, 550, 'Next', { fill: '#0f0' }).setInteractive();
+                const nextButton = this.add.text(20, 550, 'Next', { fill: '#0f0', fontSize: '20px' }).setInteractive();
                 nextButton.on('pointerdown', () => {
                     // Move to the next level or end game
                     this.scene.start('Level4'); // Change 'NextLevel' to your actual next scene key
