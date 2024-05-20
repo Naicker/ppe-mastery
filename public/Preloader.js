@@ -67,6 +67,12 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('plantation_enviroment', 'plantation_enviroment.png');
         this.load.image('refinery_enviroment', 'refinery_enviroment.png');
         this.load.image('sun_glass', 'sun_glass.png');
+        this.load.image('jacket', 'jacket.png');
+        this.load.image('goggles', 'goggles.png');
+        this.load.image('facemask', 'facemask.png');
+        this.load.image('name1', 'name1.png');
+        this.load.image('name2', 'name2.png');
+        this.load.image('name3', 'name3.png');
 
         //hint
         this.load.image('hintBackground', 'hintBackground.png');

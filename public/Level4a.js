@@ -4,9 +4,9 @@ export default class Level4a extends Phaser.Scene {
 
         this.dropZone1 = { x: 900, y: 1000, key: 'dz1', correctPPE: ['boots_ppe', 'boots_no_ppe'] };
         
-        this.dropZone2 = { x: 555, y: 550, key: 'dz2', correctPPE: ['safet_helmat_ppe', 'helmet_no_ppe'] };
+        this.dropZone2 = { x: 475, y: 550, key: 'dz2', correctPPE: ['safet_helmat_ppe', 'helmet_no_ppe'] };
 
-        this.dropZone3 = { x: 700, y: 600, key: 'dz3', correctPPE: ['safety_goggles_ppe', 'sun_glass'] };
+        this.dropZone3 = { x: 500, y: 600, key: 'dz3', correctPPE: ['safety_goggles_ppe', 'sun_glass'] };
 
 
                 this.dropZones = [this.dropZone1, this.dropZone2, this.dropZone3];
@@ -88,18 +88,19 @@ export default class Level4a extends Phaser.Scene {
                 });
             });
         
-
+            const nextButton = this.add.text(700, 500, 'Next', { fill: '#0f0', fontSize: '20px' }).setInteractive();
+            nextButton.on('pointerdown', () => {
+                // Check if any incorrect PPE items have been matched
+                const incorrectMatched = this.dropZones.some(hazard => {
+                    return this.children.list.some(child => {
+                        return child.getData('key') === hazard.key && child.getData('filled') && hazard.correctPPE[1] === child.texture.key;
+                    });
+                });
         
                 if (incorrectMatched) {
-                    const nextButton = this.add.text(20, 550, 'Next', { fill: '#0f0', fontSize: '20px' }).setInteractive();
-                    nextButton.on('pointerdown', () => {
                     // Move to Level6
                     this.scene.start('Level6');
-                });
-            }
-
-
-                 else {
+                } else {
                     // Check if all hazards have been correctly matched with PPEs
                     const allMatched = this.dropZones.every(hazard => {
                         return this.children.list.some(child => {
@@ -108,14 +109,11 @@ export default class Level4a extends Phaser.Scene {
                     });
         
                     if (allMatched) {
-                        const nextButton = this.add.text(20, 550, 'Next', { fill: '#0f0', fontSize: '20px' }).setInteractive();
-                        nextButton.on('pointerdown', () => {
-                        // Move to Level6
-                        this.scene.start('Level5');
-                    });
+                        // Move to Level5
+                        this.scene.start('miniGame');
                     }
                 }
-            
+            });
         });
     }
 }

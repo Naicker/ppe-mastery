@@ -23,20 +23,12 @@ export default class Level1 extends Phaser.Scene {
         const hintButton = this.add.text(50, 50, 'Hint', { fill: '#0f0', fontSize: '20px' }).setInteractive();
         hintButton.on('pointerdown', () => {
             // Move to the next level or end game
-            this.scene.start('hintPage'); // Change 'NextLevel' to your actual next scene key
+            this.scene.start('hintPage2'); // Change 'NextLevel' to your actual next scene key
         });
 }
 
 onRiskClicked(riskImage) {
     riskImage.destroy();
-    this.score++;
-
-    
-
-        // Check if the player has identified all risks
-        if (this.score === this.risks.length) {
-            // Proceed to level 2
-        this.scene.start('Level1b');
-        }
-}
+    this.scene.start('Level1b');
+    }
 }

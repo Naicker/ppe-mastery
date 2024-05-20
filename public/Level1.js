@@ -1,3 +1,4 @@
+
 export default class Level1 extends Phaser.Scene {
     constructor() {
         super('Level1');
@@ -7,6 +8,7 @@ export default class Level1 extends Phaser.Scene {
 
         ];
     }
+
 
     create() {
         // Display the background
@@ -26,18 +28,12 @@ export default class Level1 extends Phaser.Scene {
             this.scene.start('hintPage'); // Change 'NextLevel' to your actual next scene key
         });
 
-}
+    }
 
 
-onRiskClicked(riskImage) {
+    onRiskClicked(riskImage) {
     riskImage.destroy();
-    this.score++;
+    this.scene.start('Level1a');
+    }
 
-        // Check if the player has identified all risks
-        if (this.score === this.risks.length) {
-            // Proceed to level 2
-        this.add.image(50,50, 'tick').setScale(1.0);
-        this.scene.start('Level1a');
-        }
-}
 }
