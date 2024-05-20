@@ -11,6 +11,7 @@ export default class StartMenu extends Phaser.Scene
         const centerX = this.scale.width / 2;
         const centerY = this.scale.height / 2;
 
+        this.add.sprite(395, 475, 'nextButton');
         this.introText = this.add.text(centerX, centerY, 'Click to play', { font: '32px Arial', fill: '#000000' });
         // Set the origin of the text to be the center
         this.introText.setOrigin(0.5, -4.5);

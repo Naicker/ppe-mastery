@@ -44,7 +44,7 @@ export default class hintPage extends Phaser.Scene {
             const button = this.add.text(20, 550, 'exit', { fill: '#0f0', fontSize: '20px' }).setInteractive();
             button.on('pointerdown', () => {
                 // Return to the previous scene
-                this.scene.start(this.level1);
+                this.scene.start('Level1');
             });
         });
     }
