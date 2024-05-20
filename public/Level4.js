@@ -19,7 +19,7 @@ export default class Level4 extends Phaser.Scene {
             // Set the chosen background
             this.registry.set('background', 'background2');
             // Move to the next level
-            this.scene.start('Level5');
+            this.scene.start('Leaderboard');
         });
     }
 }

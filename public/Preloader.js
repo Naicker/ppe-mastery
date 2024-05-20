@@ -6,6 +6,8 @@ export default class Preloader extends Phaser.Scene {
     preload() {
         this.load.setPath('./assets');
 
+        this.add.image(400, 300, 'loading').setDisplaySize(800,600);
+
         // Load assets for the start menu
         this.load.image('titlescreen', 'backgrounds/titlescreen.png');
 
@@ -72,6 +74,10 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('hintBackground', 'hintBackground.png');
         this.load.image('flork', 'flork.png');
         this.load.image('chatbox', 'chatbox.png')
+
+        //leaderboard
+        this.load.image('leaderboard_bg', 'leaderboard_background.png');
+        this.load.image('leader_title', 'leaderboard_title.png');
 
 
     }

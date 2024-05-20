@@ -1,3 +1,4 @@
+import Boot from "./Boot.js"
 import Preloader from "./Preloader.js"
 import StartMenu from "./StartMenu.js"
 import Level1 from "./Level1.js"
@@ -9,6 +10,7 @@ import Level3 from "./Level3.js"
 import Level4 from "./Level4.js"
 import hintPage from "./hintPage.js"
 import Level4a from "./Level4a.js"
+import Leaderboard from "./Leaderboard.js"
 
 
 
@@ -23,7 +25,7 @@ const config = {
         height: 600
 
     },
-    scene: [Preloader, StartMenu, Level1, Level1a, Level1b, Level1ab,Level2, Level3, Level4, Level4a, hintPage ],
+    scene: [Boot, Preloader, StartMenu, Level1, Level1a, Level1b, Level1ab,Level2, Level3, Level4, Level4a, hintPage, Leaderboard],
     physics: {
         default: 'arcade',
         arcade: {debut: false}

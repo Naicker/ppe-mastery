@@ -111,7 +111,7 @@ export default class Level4a extends Phaser.Scene {
                         const nextButton = this.add.text(20, 550, 'Next', { fill: '#0f0', fontSize: '20px' }).setInteractive();
                         nextButton.on('pointerdown', () => {
                         // Move to Level6
-                        this.scene.start('Level5');
+                        this.scene.start('Leaderboard');
                     });
                     }
                 }
