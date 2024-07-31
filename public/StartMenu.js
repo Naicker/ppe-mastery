@@ -6,7 +6,7 @@ export default class StartMenu extends Phaser.Scene
 
     create ()
     {
-        this.add.image(400, 300, 'titlescreen').setDisplaySize(800,600);
+        this.add.image(400, 300, 'titlescreen').setDisplaySize(800,1000);
 
         const centerX = this.scale.width / 2;
         const centerY = this.scale.height / 2;
